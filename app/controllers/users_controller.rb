@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       flash[:success] = "#{@user.username}'s profile saved successfully."
-      render :edit
+      redirect_to user_path(@user)
     else
       flash[:warning] = "New user creation failed. Please try again."
       render :new
@@ -28,11 +28,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:success] = "Profile updated."
-      render :new
+      redirect_to user_path(@user)
     else
       flash[:warning] = "Update failed. Please try again."
       render :edit
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   private

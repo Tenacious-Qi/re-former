@@ -1,0 +1,7 @@
+<p>User Info</p>
+<hr>
+<p> Username: <%= @user.username %> </p>
+<p> Email: <%= @user.email %> </p>
+
+<%= link_to "Create New User", new_user_path %>
+<%= link_to "Edit Current User", edit_user_path(@user) %>
