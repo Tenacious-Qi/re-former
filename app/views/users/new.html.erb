@@ -29,6 +29,8 @@
 -->
 
 <%= form_with(model: @user) do |form| %>
+  <%= render 'shared/error_messages', object: form.object %>
+  
   <%= form.label :username %>
   <%= form.text_field :username, placeholder: "enter a username here" %>
   <%= form.label :email %>

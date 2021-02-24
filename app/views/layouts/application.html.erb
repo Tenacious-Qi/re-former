@@ -11,13 +11,17 @@
   </head>
 
   <body>
-    <div class="container">
-      <% flash.each do |message_type, message| %>
-        <div>
+    <% flash.each do |message_type, message| %>
+      <% if message_type == "success" %>
+        <div class="success">
+          <%= "** #{message_type}: #{message} **" %>
+        </div>
+      <% else %>
+        <div class="failure">
           <%= "** #{message_type}: #{message} **" %>
         </div>
       <% end %>
-      <%= yield %>
-    </div>
+    <% end %>
+    <%= yield %>
   </body>
 </html>
